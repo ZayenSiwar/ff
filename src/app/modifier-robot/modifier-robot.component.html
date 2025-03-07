@@ -1,1 +1,65 @@
-<p>modifier-robot works!</p>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+
+  <div class="container">
+    <h1>Modifier un Robot</h1>
+    <form #robotForm="ngForm" (ngSubmit)="updateRobot()">
+      <div class="form-group">
+        <label for="id">ID du Robot</label>
+        <input
+          type="number"
+          id="id"
+          name="id"
+          [(ngModel)]="robotToEdit.id"
+          required
+          class="form-control"
+          placeholder="Entrez l'ID"
+          readonly
+        >
+      </div>
+      <div class="form-group">
+        <label for="name">Nom du Robot</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="robotToEdit.name"
+          required
+          class="form-control"
+          placeholder="Entrez le nom"
+        >
+      </div>
+      <div class="form-group">
+        <label for="status">Statut</label>
+        <select
+          id="status"
+          name="status"
+          [(ngModel)]="robotToEdit.status"
+          required
+          class="form-control" >
+          <option value="">Sélectionnez un statut</option>
+          <option value="actif">Actif</option>
+          <option value="inactif">Inactif</option>
+          <option value="en maintenance">En maintenance</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!robotForm.valid"
+        >
+          Modifier
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancel()"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

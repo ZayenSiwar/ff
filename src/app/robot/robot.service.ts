@@ -1,17 +1,11 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+@Injectable({ providedIn: 'root' })
 
-export interface Robot {
-  id: number;
-  name: string;
-  status: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
 export class RobotService {
+
   getAllRobots() {
     throw new Error('Method not implemented.');
   }
@@ -26,7 +20,6 @@ export class RobotService {
   }
 
 
-  
   updateRobot(robot: Robot): Observable<Robot> {
     return this.http.put<Robot>(`${this.apiUrl}/${robot.id}`, robot);
   }
@@ -45,4 +38,10 @@ export class RobotService {
     return this.http.get<Robot>(`${this.apiUrl}/${robotId}`);
   }
 
+
+  }
+export interface Robot {
+  id: number;
+  name: string;
+  status: string;
 }

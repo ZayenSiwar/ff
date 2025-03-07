@@ -1,39 +1,41 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Component, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { Robot, RobotService } from '../robot/robot.service';
+import { FormsModule } from '@angular/forms'; // Importer FormsModule
+import { HeaderComponent } from '../header/header.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+@Injectable({ providedIn: 'root' })
 @Component({
-    selector: 'app-ajouter-robot',
-    templateUrl: './ajouter-robot.component.html',
+  selector: 'app-ajouter-robot',
+  standalone: true,
+  imports: [FormsModule,HttpClientModule,HeaderComponent, SidebarComponent],
+  templateUrl: './ajouter-robot.component.html',
+  styleUrls: ['./ajouter-robot.component.css'],
 })
 export class AjouterRobotComponent {
-    robotId: string = '';
-    robotName: string = '';
-    robotStatus: string = 'connecté'; // Valeur par défaut
+  robot: Robot = {
+    id: 0,
+    name: '',
+    status: ''
+  };
 
-    constructor(private http: HttpClient) {}
+  constructor(private robotService: RobotService, private router: Router) {}
 
-    onSubmit() {
-        const robotData = {
-            id: this.robotId,
-            name: this.robotName,
-            status: this.robotStatus
-        };
+  onSubmit(): void {
+    this.robotService.addRobot(this.robot).subscribe({
+      next: (response: Robot) => {
+        console.log('Robot ajouté avec succès :', response);
+        this.router.navigate(['/robot']);
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de l\'ajout du robot :', error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
+      }
+    });
+  }
 
-        this.http.post('/api/robots', robotData).subscribe(
-            (response: any) => {
-                console.log('Robot ajouté:', response);
-                this.resetForm(); // Réinitialiser le formulaire
-                // Vous pouvez ajouter une fonction pour mettre à jour la liste des robots ici
-            },
-            (error) => {
-                console.error('Erreur lors de l\'ajout du robot:', error);
-            }
-        );
-    }
-
-    resetForm() {
-        this.robotId = '';
-        this.robotName = '';
-        this.robotStatus = 'connecté'; // Réinitialiser à la valeur par défaut
-    }
+  cancel(): void {
+    this.router.navigate(['/robot']);
+  }
 }

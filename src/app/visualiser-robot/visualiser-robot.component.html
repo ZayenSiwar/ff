@@ -1,0 +1,47 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Liste des Robots</h4>
+                    </div>
+                    <div class="content">
+                        <button (click)="showRobotIds()" class="btn btn-info">Afficher les IDs des Robots</button>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let robot of robots">
+                                    <td>{{ robot.id }}</td>
+                                    <td>{{ robot.name }}</td>
+                                    <td>{{ robot.status }}</td>
+                                    <td>
+                                        <button (click)="modifierRobot(robot.id)" class="btn btn-warning">Modifier</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div *ngIf="robots.length === 0">
+                            <p>Aucun robot trouvé.</p>
+                        </div>
+
+                        <div *ngIf="errorMessage" class="alert alert-danger">
+                            {{ errorMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
