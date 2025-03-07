@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Supprimer une Machine</h4>
+          </div>
+          <div class="content">
+            <div class="form-group">
+              <label>Nom de la Machine</label>
+              <input type="text" class="form-control" placeholder="Nom de la Machine"
+                     [value]="machineToDelete ? machineToDelete.name : ''" name="name" required readonly>
+            </div>
+            <div class="form-group">
+              <label>Fréquence Radio</label>
+              <input type="text" class="form-control" placeholder="Fréquence Radio"
+                     [value]="machineToDelete ? machineToDelete.frequency : ''" name="frequency" required readonly>
+            </div>
+            <div class="confirmation-dialog">
+              <h3>Êtes-vous sûr de vouloir supprimer cette machine ?</h3>
+              <p>Nom: {{ machineToDelete?.name }}</p>
+              <p>Fréquence: {{ machineToDelete?.frequency }}</p>
+              <div class="button-group">
+                <button (click)="onDelete()" class="btn btn-danger">Supprimer</button>
+                <button (click)="cancel()" class="btn btn-secondary">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

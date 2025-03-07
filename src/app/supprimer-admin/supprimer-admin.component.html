@@ -1,0 +1,21 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+
+  <div class="container centered-container">
+    <h1>Supprimer un Admin</h1>
+    <div class="confirmation">
+      <p>Voulez-vous vraiment supprimer l'admin avec l'ID : {{ adminId || 'inconnu' }} ?</p>
+    </div>
+    <div class="button-group">
+      <button
+        class="btn btn-danger"
+        (click)="confirmDelete()"
+        [disabled]="!adminId">
+        Confirmer la suppression
+      </button>
+      <a class="btn btn-secondary" (click)="cancel()">Annuler</a>
+    </div>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+  </div>
+</div>

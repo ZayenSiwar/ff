@@ -1,0 +1,53 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+
+  <div class="container centered-container">
+    <h1>Modifier un Admin</h1>
+    <form #adminForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="admin.name"
+          required
+          class="form-control"
+          placeholder="Entrez le nom">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="admin.email"
+          required
+          class="form-control"
+          placeholder="Entrez l'email">
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="admin.password"
+          required
+          class="form-control"
+          placeholder="Entrez le mot de passe">
+      </div>
+      <div class="button-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!adminForm.valid">
+          Modifier Admin
+        </button>
+        <a class="btn btn-secondary" (click)="cancel()">Annuler</a>
+      </div>
+    </form>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+  </div>
+</div>

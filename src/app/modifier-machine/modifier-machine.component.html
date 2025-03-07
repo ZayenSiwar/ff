@@ -1,0 +1,25 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+
+  <div class="container centered-container">
+    <h1>Modifier une Machine</h1>
+    <form (ngSubmit)="onSubmit()" class="machine-form">
+      <div>
+        <label for="name">Nom :</label>
+        <input id="name" [(ngModel)]="machine.name" name="name" required>
+      </div>
+      <div>
+        <label>Fréquence Radio :</label>
+        <label><input type="radio" name="frequency" value="FM" [(ngModel)]="machine.frequency" required> FM</label>
+        <label><input type="radio" name="frequency" value="AM" [(ngModel)]="machine.frequency"> AM</label>
+        <label><input type="radio" name="frequency" value="Other" [(ngModel)]="machine.frequency"> Autre</label>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+        <a class="btn btn-secondary" [routerLink]="['/dashboard']">Annuler</a>
+      </div>
+    </form>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+  </div>
+</div>

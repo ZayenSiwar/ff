@@ -1,0 +1,39 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Visualiser les Machines</h4>
+          </div>
+          <div class="content">
+            <div class="machine-list" *ngIf="machines.length > 0; else noMachines">
+              <div class="machine-item" *ngFor="let machine of machines; let i = index">
+                <div class="form-group">
+                  <label>Nom de la Machine</label>
+                  <input type="text" class="form-control" [value]="machine.name" readonly>
+                </div>
+                <div class="form-group">
+                  <label>Fréquence Radio</label>
+                  <input type="text" class="form-control" [value]="machine.frequency" readonly>
+                </div>
+                <div class="button-group">
+                  <a [routerLink]="['/modifier-machine', i]" class="btn btn-primary">Modifier</a>
+                  <a [routerLink]="['/supprimer-machine', i]" class="btn btn-danger">Supprimer</a>
+                </div>
+              </div>
+            </div>
+            <ng-template #noMachines>
+              <div class="alert alert-info">
+                Aucune machine trouvée. Ajoutez une machine via l'option "Ajouter Machine".
+              </div>
+            </ng-template>
+            <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

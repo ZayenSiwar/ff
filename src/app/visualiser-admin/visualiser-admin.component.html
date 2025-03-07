@@ -1,0 +1,19 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+
+  <div class="container centered-container">
+    <h1>Visualiser les Admins</h1>
+    <div class="admin-list-container">
+      <p *ngIf="admins.length === 0 && !message">Chargement des admins...</p>
+      <ul class="admin-list" *ngIf="admins.length > 0">
+        <li *ngFor="let admin of admins">
+          <strong>Nom :</strong> {{ admin.name }} <br>
+          <strong>Email :</strong> {{ admin.email }} <br>
+          <strong>Mot de passe :</strong> {{ admin.password }}
+        </li>
+      </ul>
+      <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+    </div>
+  </div>
+</div>

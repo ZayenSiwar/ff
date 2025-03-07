@@ -9,13 +9,23 @@ import { DashboardComponent } from './dashboard/dashboard.component'; // Assurez
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AjouterRobotComponent } from './ajouter-robot/ajouter-robot.component'; // Assurez-vous que c'est un composant autonome
+import { VisualiserRobotComponent } from './visualiser-robot/visualiser-robot.component';
+import { AjouterAdminComponent } from './ajouter-admin/ajouter-admin.component';
+import { MoodifierAdminComponent } from './moodifier-admin/moodifier-admin.component';
+import { SupprimerAdminComponent } from './supprimer-admin/supprimer-admin.component';
+import { VisualiserAdminComponent } from './visualiser-admin/visualiser-admin.component';
+import { MachineComponent } from './machine/machine.component';
+import { AjouterMachineComponent } from './ajouter-machine/ajouter-machine.component';
+import { ModifierMachineComponent } from './modifier-machine/modifier-machine.component';
+import { SupprimerMachineComponent } from './supprimer-machine/supprimer-machine.component';
+import { VisualiserMachineComponent } from './visualiser-machine/visualiser-machine.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
 
-    // Ne pas déclarer DashboardComponent et AjouterRobotComponent s'ils sont autonomes
+
   ],
   imports: [
     BrowserModule,
@@ -24,9 +34,19 @@ import { AjouterRobotComponent } from './ajouter-robot/ajouter-robot.component';
     HttpClientModule,
     FooterComponent,
     HeaderComponent,
-    // Importer les composants autonomes ici, si nécessaire
-    DashboardComponent, // Si autonome, sinon supprimez-le de cette liste
-    AjouterRobotComponent // Si autonome, sinon supprimez-le de cette liste
+VisualiserRobotComponent,
+    DashboardComponent,
+    AjouterRobotComponent,
+    AjouterAdminComponent,
+    MoodifierAdminComponent,
+    SupprimerAdminComponent,
+    VisualiserAdminComponent,
+    MachineComponent,
+    AjouterMachineComponent,
+    ModifierMachineComponent,
+    SupprimerMachineComponent,
+    VisualiserMachineComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]

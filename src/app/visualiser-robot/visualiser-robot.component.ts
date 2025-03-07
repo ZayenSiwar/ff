@@ -11,7 +11,7 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [FormsModule, HeaderComponent,SidebarComponent],
   templateUrl: './visualiser-robot.component.html',
-  styleUrl: './visualiser-robot.component.css'
+  styleUrls: ['./visualiser-robot.component.css']
 })
 export class VisualiserRobotComponent  implements OnInit {
     robots: any[] = [];

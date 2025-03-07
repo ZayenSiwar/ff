@@ -1,0 +1,22 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-container">
+  <div class="container centered-container">
+    <h1>Ajouter une Machine</h1>
+    <form (ngSubmit)="onSubmit()" class="machine-form">
+      <div>
+        <label for="name">Nom :</label>
+        <input id="name" [(ngModel)]="newMachine.name" name="name" required>
+      </div>
+      <div>
+        <label for="frequency">Fréquence Radio :</label>
+        <input id="frequency" [(ngModel)]="newMachine.frequency" name="frequency" required>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <a class="btn btn-secondary" [routerLink]="['/dashboard']">Annuler</a>
+      </div>
+    </form>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+  </div>
+</div>
